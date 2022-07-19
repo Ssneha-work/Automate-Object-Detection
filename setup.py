@@ -3,6 +3,7 @@ import os
 import shutil
 import tarfile
 from requests import get
+import argparse
 
 parser = argparse.ArgumentParser(
     description="Setting up the environment")
