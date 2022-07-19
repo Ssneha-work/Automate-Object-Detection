@@ -50,7 +50,7 @@ os.system("python object_detection/builders/model_builder_test.py")
 print("Downloading pretrained model...")
 # Downloading pretrained model
 os.chdir(PATH_ROOT + "/tf")
-MODEL=args.model
+MODEL=args.model_name
 MODEL_FILE = MODEL + '.tar.gz'
 DOWNLOAD_BASE = 'http://download.tensorflow.org/models/object_detection/'
 DEST_DIR = 'pretrained_model'
