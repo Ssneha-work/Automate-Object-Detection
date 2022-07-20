@@ -8,16 +8,15 @@ import argparse
 parser = argparse.ArgumentParser(
     description="Setting up the environment")
 
-parser.add_argument("-p",
-                    "--path_model_config",
-                    help="Path of the pretrained model coco configuration file",
-                    default="PATH_ROOT+/ssd_inception_v2_coco.config",
-                    type=str)
-
 parser.add_argument("-m",
                     "--model_name",
                     help="Name of the pretrained model",
                     default="ssd_inception_v2_coco_2018_01_28",
+                    type=str)
+parser.add_argument("-p",
+                    "--path_model_config",
+                    help="Path of the pretrained model coco configuration file",
+                    default="PATH_ROOT+/ssd_inception_v2_coco.config",
                     type=str)
 
 args = parser.parse_args()
