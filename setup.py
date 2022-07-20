@@ -8,6 +8,12 @@ import argparse
 parser = argparse.ArgumentParser(
     description="Setting up the environment")
 
+parser.add_argument("-p",
+                    "--path_model_config",
+                    help="Path of the pretrained model coco configuration file",
+                    default="PATH_ROOT+/ssd_inception_v2_coco.config",
+                    type=str)
+
 parser.add_argument("-m",
                     "--model_name",
                     help="Name of the pretrained model",
@@ -54,6 +60,7 @@ MODEL=args.model_name
 MODEL_FILE = MODEL + '.tar.gz'
 DOWNLOAD_BASE = 'http://download.tensorflow.org/models/object_detection/'
 DEST_DIR = 'pretrained_model'
+CONFIG_FILE=args.path_model_config
 
 
 if not (os.path.exists(MODEL_FILE)):
@@ -73,7 +80,7 @@ if (os.path.exists(DEST_DIR)):
   shutil.rmtree(DEST_DIR)
 os.rename(MODEL, DEST_DIR)
 print("Moving config file to tf folder...")
-shutil.move(PATH_ROOT+"/"+MODEL+".config", PATH_ROOT +"/tf") 
+shutil.move(CONFIG_FILE, PATH_ROOT +"/tf") 
 shutil.move(PATH_ROOT+"/config.py", PATH_ROOT +"/tf/research") 
 os.chdir(PATH_ROOT)
 
