@@ -59,7 +59,10 @@ MODEL=args.model_name
 MODEL_FILE = MODEL + '.tar.gz'
 DOWNLOAD_BASE = 'http://download.tensorflow.org/models/object_detection/'
 DEST_DIR = 'pretrained_model'
-CONFIG_FILE=args.path_model_config
+if (MODEL!="ssd_inception_v2_coco_2018_01_28"):
+  CONFIG_FILE=args.path_model_config
+else:
+  CONFIG_FILE=PATH_ROOT+"/ssd_inception_v2_coco.config"
 
 
 if not (os.path.exists(MODEL_FILE)):
@@ -80,10 +83,7 @@ if (os.path.exists(DEST_DIR)):
 os.rename(MODEL, DEST_DIR)
 
 print("Moving config file to tf folder...")
-if (MODEL!="ssd_inception_v2_coco_2018_01_28"):
-  shutil.move(CONFIG_FILE,PATH_ROOT +"/tf")
-else:
-  shutil.move(PATH_ROOT+"/ssd_inception_v2_coco.config", PATH_ROOT +"/tf") 
+shutil.move(CONFIG_FILE,PATH_ROOT +"/tf")
 shutil.move(PATH_ROOT+"/config.py", PATH_ROOT +"/tf/research") 
 os.chdir(PATH_ROOT)
 
