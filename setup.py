@@ -16,7 +16,7 @@ parser.add_argument("-m",
 parser.add_argument("-p",
                     "--path_model_config",
                     help="Path of the pretrained model coco configuration file",
-                    default="PATH_ROOT+/ssd_inception_v2_coco.config",
+                    default="/ssd_inception_v2_coco.config",
                     type=str)
 
 args = parser.parse_args()
@@ -78,8 +78,12 @@ os.remove(MODEL_FILE)
 if (os.path.exists(DEST_DIR)):
   shutil.rmtree(DEST_DIR)
 os.rename(MODEL, DEST_DIR)
+
 print("Moving config file to tf folder...")
-shutil.move(CONFIG_FILE, PATH_ROOT +"/tf") 
+if (MODEL!="ssd_inception_v2_coco_2018_01_28"):
+  shutil.move(CONFIG_FILE,PATH_ROOT +"/tf")
+else:
+  shutil.move(PATH_ROOT+"/ssd_inception_v2_coco.config", PATH_ROOT +"/tf") 
 shutil.move(PATH_ROOT+"/config.py", PATH_ROOT +"/tf/research") 
 os.chdir(PATH_ROOT)
 
