@@ -50,7 +50,7 @@ os.environ['PYTHONPATH'] += ':' + PATH_ROOT + '/tf/research/:'+PATH_ROOT+'/tf/re
 
 
 pipeline = pipeline_pb2.TrainEvalPipelineConfig()                                                                                                                                                                                                          
-config_path = glob.glob(os.getcwd()+"/tf/*.config")
+config_path = ''.join(glob.glob(os.getcwd()+"/tf/*.config"))
 with tf.gfile.GFile( config_path, "r") as f:                                                                                                                                                                                                                     
     proto_str = f.read()                                                                                                                                                                                                                                          
     text_format.Merge(proto_str, pipeline)
