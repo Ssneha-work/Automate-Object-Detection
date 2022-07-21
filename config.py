@@ -22,6 +22,24 @@ parser.add_argument("-s",
                     default=500,
                     type=int)
 
+parser.add_argument("-ne",
+                    "--examples",
+                    help="Number of examples to be evaluated in dataset",
+                    default=20,
+                    type=str)
+
+parser.add_argument("-bs",
+                    "--batch_size",
+                    help="Batch size for training",
+                    default=24,
+                    type=str)
+
+parser.add_argument("-lr",
+                    "--learning_rate",
+                    help="Initial Learning Rate",
+                    default=0.004,
+                    type=str)
+
 args = parser.parse_args()  
 
 PATH_ROOT=args.root
@@ -31,7 +49,7 @@ os.environ['PYTHONPATH'] += ':' + PATH_ROOT + '/tf/research/:'+PATH_ROOT+'/tf/re
 
 
 pipeline = pipeline_pb2.TrainEvalPipelineConfig()                                                                                                                                                                                                          
-config_path = PATH_ROOT + '/tf/ssd_inception_v2_coco.config'
+config_path = glob.glob(os.getcwd()+"/tf/*.config")
 with tf.gfile.GFile( config_path, "r") as f:                                                                                                                                                                                                                     
     proto_str = f.read()                                                                                                                                                                                                                                          
     text_format.Merge(proto_str, pipeline)
@@ -44,7 +62,10 @@ pipeline.eval_input_reader[0].label_map_path = PATH_ROOT + '/tfrecords/label_map
 pipeline.train_config.fine_tune_checkpoint = PATH_ROOT + '/tf/pretrained_model/model.ckpt'
 pipeline.train_config.num_steps = args.steps
 pipeline.model.ssd.num_classes = args.classes
-pipeline.eval_config.num_examples = 1000
+pipeline.eval_config.num_examples = args.examples
+pipeline.train_config.batch_size = args.batch_size
+pipeline.train_config.optimizer.rms_prop_optimizer.learning_rate.exponential_decay_learning_rate.initial_learning_rate=args.learning_rate
+
 
 config_text = text_format.MessageToString(pipeline)                                                                                                                                                                                                        
 with tf.gfile.Open( config_path, "wb") as f:                                                                                                                                                                                                                       
