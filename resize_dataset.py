@@ -26,7 +26,7 @@ parser.add_argument(
     required=False
 )
 parser.add_argument("-s",
-                    "--new_size",
+                    "--new_image_size",
                     help="New Shape of the image to store",
                     nargs=2,
                     default=[224,224],
@@ -142,7 +142,7 @@ def resize_json(file , output_path ,newSize):
 PATH_ROOT = os.getcwd()
 PATH_ROOT = PATH_ROOT.replace(" ","")
 
-newSize = tuple(args.size)
+newSize = tuple(args.new_image_size)
 dataset_path = args.dataset_path
 out_path = os.path.join(PATH_ROOT,"images")
 format = ""
