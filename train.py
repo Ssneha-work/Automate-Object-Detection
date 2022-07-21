@@ -53,6 +53,6 @@ os.environ['PYTHONPATH'] += ':' + PATH_ROOT + '/tf/research/:'+PATH_ROOT+'/tf/re
 
 TRAIN = PATH_ROOT + "/tf/research/object_detection/legacy/train.py"
 TRAIN_DIR = PATH_ROOT+"/tf/trained"
-CONFIG = glob.glob(os.getcwd()+"/tf/*.config")
-os.system("python "+TRAIN+" --logtostderr --train_dir="+TRAIN_DIR+" --pipeline_config_path=".join(CONFIG))
+CONFIG = ''.join(glob.glob(os.getcwd()+"/tf/*.config"))
+os.system("python "+TRAIN+" --logtostderr --train_dir="+TRAIN_DIR+" --pipeline_config_path="+CONFIG)
 os.chdir(PATH_ROOT)
