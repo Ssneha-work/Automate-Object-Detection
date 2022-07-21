@@ -27,19 +27,19 @@ parser.add_argument("-ne",
                     "--examples",
                     help="Number of examples to be evaluated in dataset",
                     default=20,
-                    type=str)
+                    type=int)
 
 parser.add_argument("-bs",
                     "--batch_size",
                     help="Batch size for training",
                     default=24,
-                    type=str)
+                    type=int)
 
 parser.add_argument("-lr",
                     "--learning_rate",
                     help="Initial Learning Rate",
                     default=0.004,
-                    type=str)
+                    type=float)
 
 args = parser.parse_args()  
 
