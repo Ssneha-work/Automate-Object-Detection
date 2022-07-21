@@ -3,6 +3,7 @@ from google.protobuf import text_format
 from object_detection.protos import pipeline_pb2
 import os
 import argparse
+import glob
 
 
 parser = argparse.ArgumentParser(
