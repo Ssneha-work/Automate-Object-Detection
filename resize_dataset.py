@@ -17,6 +17,7 @@ parser.add_argument(
     help='Path to dataset data ?(image and annotations).',
     required=True
 )
+
 parser.add_argument(
     '-o',
     '--output',
@@ -25,6 +26,7 @@ parser.add_argument(
     default='./',
     required=False
 )
+
 parser.add_argument("-s",
                     "--new_image_size",
                     help="New Shape of the image to store",
