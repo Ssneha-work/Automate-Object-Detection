@@ -8,6 +8,7 @@ import glob
 
 parser = argparse.ArgumentParser(
     description="Configure file for the model")
+    
 parser.add_argument("-r",
                     "--root",
                     help="Path of root directory",
