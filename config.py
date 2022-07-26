@@ -26,7 +26,7 @@ parser.add_argument("-s",
 parser.add_argument("-ne",
                     "--examples",
                     help="Number of examples to be evaluated in dataset",
-                    default=20,
+                    default=10,
                     type=int)
 
 parser.add_argument("-bs",

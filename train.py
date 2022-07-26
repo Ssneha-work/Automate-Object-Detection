@@ -20,7 +20,7 @@ parser.add_argument("-c",
 parser.add_argument("-ne",
                     "--examples",
                     help="Number of examples to be evaluated in dataset",
-                    default=20,
+                    default=10,
                     type=str)
 parser.add_argument("-bs",
                     "--batch_size",
@@ -53,6 +53,7 @@ os.environ['PYTHONPATH'] += ':' + PATH_ROOT + '/tf/research/:'+PATH_ROOT+'/tf/re
 
 TRAIN = PATH_ROOT + "/tf/research/object_detection/legacy/train.py"
 TRAIN_DIR = PATH_ROOT+"/tf/trained"
-CONFIG = ''.join(glob.glob(os.getcwd()+"/tf/*.config"))
+CONFIG = glob.glob(os.getcwd()+"/tf/*.config")
+CONFIG=''.join(CONFIG)
 os.system("python "+TRAIN+" --logtostderr --train_dir="+TRAIN_DIR+" --pipeline_config_path="+CONFIG)
 os.chdir(PATH_ROOT)
