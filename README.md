@@ -60,8 +60,8 @@
    > ```
 10. Check your predictions
    >
-   > #### Parameters:
-   >
+   > #### Parameters
+   > 
    > -c : Number of classes in dataset<br>
    > -n : Number of images to show predictions on<br>
    > -s : Size, in inches of an output image of 
@@ -69,3 +69,4 @@
    > ```markdown
    > %run plot.py -c 2 -n 14 -s 10 8
    > ```
+   
